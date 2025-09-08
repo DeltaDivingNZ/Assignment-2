@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Snazzy Paws Grooming</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Snazzy Paws Grooming</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="services.html">Services</a> |
+        <a href="bookings.html">Bookings</a> |
+        <a href="contact.html">Contact</a> |
+        <a href="gallery.html">Gallery</a>
+    </nav>
+    <div class="main-container">
+        <div class="left-column">
+            <!-- Most Popular Packages -->
+            <div class="section">
+                <div class="section-title">Most Popular Packages</div>
+                <ul class="package-list">
+                    <li>
+                        <strong>Package 1: Bath and Brush</strong><br>
+                        Shampoo, blow-dry, brush-out and nail trim.
+                    </li>
+                    <li>
+                        <strong>Package 2: Nail Trim</strong><br>
+                        Trim nails and, in some cases, filing.
+                    </li>
+                </ul>
+                <div class="btn-group">
+                    <a href="bookings.html" class="main-btn">Book a Groom</a>
+                    <a href="services.html" class="main-btn">View All Packages</a>
+                </div>
+            </div>
+            <!-- Book a Groom -->
+            <div class="section">
+                <div class="section-title">Book a Groom</div>
+                <p>
+                    We're excited to pamper your dog and give them the best grooming experience! 
+                    Our friendly team can't wait to meet your furry friend.<br>
+                    <a href="bookings.html" class="main-btn" style="margin-top:12px;">Book Now</a>
+                </p>
+            </div>
+            <!-- Contact Us -->
+            <div class="section">
+                <div class="section-title">Contact Us</div>
+                <p>
+                    Have questions or want to chat with our team? We're here to help!<br>
+                    <a href="contact.html" class="main-btn" style="margin-top:12px;">Contact Us</a>
+                </p>
+                <div class="social-links">
+                    <a href="https://facebook.com/" target="_blank">Facebook</a>
+                    <a href="https://instagram.com/" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="right-column">
+            <!-- Package Photos -->
+            <div class="section package-photos">
+                <div class="section-title">Package Photos</div>
+                <img src="images/package1.jfif" alt="Bath and Brush Photo">
+                <img src="images/package2.jpg" alt="Nail Trim Photo">
+            </div>
+            <!-- Carousel -->
+            <div class="section">
+                <div class="carousel">
+                    <img src="images/dog1.jfif" class="carousel-image active" alt="Dog 1">
+                    <img src="images/dog2.jfif" class="carousel-image" alt="Dog 2">
+                    <img src="images/dog3.jfif" class="carousel-image" alt="Dog 3">
+                    <button onclick="prevImage()" class="carousel-btn">Prev</button>
+                    <button onclick="nextImage()" class="carousel-btn">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+let current = 0;
+const images = document.querySelectorAll('.carousel-image');
+let intervalId;
+
+function showImage(idx) {
+    images.forEach((img, i) => {
+        img.classList.toggle('active', i === idx);
+    });
+}
+
+function prevImage() {
+    current = (current - 1 + images.length) % images.length;
+    showImage(current);
+}
+
+function nextImage() {
+    current = (current + 1) % images.length;
+    showImage(current);
+}
+
+function startCarousel() {
+    intervalId = setInterval(() => {
+        nextImage();
+    }, 2000);
+}
+
+function stopCarousel() {
+    clearInterval(intervalId);
+}
+
+// Pause on hover
+images.forEach(img => {
+    img.addEventListener('mouseenter', stopCarousel);
+    img.addEventListener('mouseleave', startCarousel);
+});
+
+// Start carousel on load
+showImage(current);
+startCarousel();
+</script>
+<footer style="text-align:center; background:#f3f3f3; padding:16px 0; font-size:0.95rem; color:#444; border-top:1px solid #e0e0e0; margin-top:24px;">
+        Opening Hours: Mon-Sat 8am-6pm, Sun Closed <br>
+        &copy; 2025 Snazzy Paws Grooming. All rights reserved.<br>
+    </footer>
+</body>
+</html>
