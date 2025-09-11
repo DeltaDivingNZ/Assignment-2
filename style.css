@@ -1,3 +1,4 @@
+/* Reset and base styles */
 html, body {
     height: 100%;
     margin: 0;
@@ -8,6 +9,8 @@ html, body {
     width: 100%;
     min-height: 100vh;
 }
+
+/* Header */
 header {
     text-align: center;
     padding: 2vw 0 1vw 0;
@@ -15,6 +18,8 @@ header {
     font-size: 2rem;
     border-bottom: 1px solid #eee;
 }
+
+/* Navigation */
 nav {
     text-align: center;
     background: #f3f3f3;
@@ -22,43 +27,41 @@ nav {
     font-size: 1.1rem;
     border-bottom: 1px solid #e0e0e0;
 }
+nav a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s;
+}
+nav a:hover {
+    color: #2563eb;
+}
+
+/* Main layout */
 .main-container {
     display: flex;
     flex-direction: row;
-    min-height: 0;
     width: 100%;
     max-width: 1440px;
-    margin: 0 auto;
-    height: calc(100vh - 120px);
-    margin-bottom: 32px;
+    margin: 0 auto 32px auto;
+    min-height: calc(100vh - 120px);
 }
 .left-column, .right-column {
-    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 2vw;
     padding: 2vw;
     flex: 1;
 }
-.left-column {
-    flex: 1.2;
-    padding-left: 3vw;
-    padding-right: 1vw;
-}
-.right-column {
-    flex: 1;
-    align-items: center;
-    padding-right: 3vw;
-    padding-left: 1vw;
-}
+.left-column { flex: 1.2; padding-left: 3vw; padding-right: 1vw; }
+.right-column { flex: 1; padding-left: 1vw; padding-right: 3vw; align-items: center; }
+
+/* Sections */
 .section {
     background: #e0e0e0;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     padding: 2vw;
-    margin-bottom: 0;
-    min-width: 0;
-    min-height: 0;
 }
 .section-title {
     font-size: 1.3rem;
@@ -66,17 +69,14 @@ nav {
     margin-bottom: 1vw;
     color: #2d2d2d;
 }
-.package-list {
-    margin-bottom: 1vw;
-}
-.package-list li {
-    margin-bottom: 0.7vw;
-    font-size: 1.05rem;
-}
+
+/* Package list */
+.package-list li { margin-bottom: 0.7vw; font-size: 1.05rem; }
+
+/* Buttons */
 .btn-group {
     display: flex;
     gap: 1vw;
-    margin-bottom: 0;
     flex-wrap: wrap;
     margin-bottom: 38px;
 }
@@ -88,19 +88,19 @@ nav {
     background: #4e8cff;
     color: #fff;
     cursor: pointer;
-    transition: background 0.2s;
     text-decoration: none;
     display: inline-block;
+    transition: background 0.2s;
     margin-bottom: 0.5vw;
 }
-.main-btn:hover {
-    background: #2563eb;
-}
+.main-btn:hover { background: #2563eb; }
+
+/* Social links */
 .social-links {
-    margin-top: 1vw;
     display: flex;
     gap: 1vw;
     flex-wrap: wrap;
+    margin-top: 1vw;
     margin-bottom: 32px;
 }
 .social-links a {
@@ -109,9 +109,9 @@ nav {
     text-decoration: none;
     transition: color 0.2s;
 }
-.social-links a:hover {
-    color: #2563eb;
-}
+.social-links a:hover { color: #2563eb; }
+
+/* Package photos */
 .package-photos {
     display: flex;
     flex-direction: column;
@@ -119,20 +119,16 @@ nav {
     width: 100%;
     max-width: 580px;
     box-sizing: border-box;
-    overflow: visible;
-    position: relative; /* Add this line */
 }
-
 .package-photos img {
     width: 100%;
-    max-width: 100%;
-    height: 125px; /* Set a fixed height for consistency */
-    object-fit: cover; /* Ensures the whole image is visible and not cut off */
+    height: auto;
     border-radius: 8px;
     margin-bottom: 1vw;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    display: block;
 }
+
+/* Carousel */
 .carousel {
     position: relative;
     width: 100%;
@@ -140,33 +136,29 @@ nav {
     margin: 0 auto;
     text-align: center;
     aspect-ratio: 300/168;
-    min-height: 168px;
 }
 .carousel-image {
-    width: 500px;
-    height: 230px;
-    aspect-ratio: unset;
+    width: 100%;
+    height: auto;
     object-fit: cover;
     position: absolute;
     left: 0;
     top: 0;
     opacity: 0;
-    transition: opacity 1s, transform 1s; /* Add transform transition */
+    transition: opacity 1s, transform 1s;
     z-index: 1;
     border-radius: 8px;
-    transform: scale(1); /* Default scale */
+    transform: scale(1);
 }
 .carousel-image.active {
     opacity: 1;
     z-index: 2;
     position: relative;
-    transform: scale(1.05); /* Slight zoom when active */
+    transform: scale(1.05);
 }
 .carousel-btn {
     margin: 10px;
     padding: 8px 16px;
-    position: relative;
-    z-index: 3;
     border-radius: 6px;
     border: none;
     background: #4e8cff;
@@ -174,9 +166,9 @@ nav {
     cursor: pointer;
     transition: background 0.2s;
 }
-.carousel-btn:hover {
-    background: #2563eb;
-}
+.carousel-btn:hover { background: #2563eb; }
+
+/* Footer */
 footer {
     text-align: center;
     background: #f3f3f3;
@@ -186,32 +178,25 @@ footer {
     border-top: 1px solid #e0e0e0;
     margin-top: 24px;
 }
+
+/* Responsive: Tablets & smaller screens */
 @media (max-width: 900px) {
     .main-container {
         flex-direction: column;
         height: auto;
     }
-    .left-column, .right-column {
-        padding: 4vw 2vw;
-    }
-    .package-photos img, .carousel {
-        max-width: 100%;
-    }
+    .left-column, .right-column { padding: 4vw 2vw; }
+    .package-photos img, .carousel { max-width: 100%; }
 }
+
+/* Responsive: Mobile phones */
 @media (max-width: 600px) {
-    header {
-        font-size: 1.2rem;
-        padding: 4vw 0 2vw 0;
-    }
-    nav {
-        font-size: 1rem;
-        padding: 2vw 0;
-    }
-    .section-title {
-        font-size: 1.1rem;
-    }
-    .main-btn {
-        font-size: 0.9rem;
-        padding: 1vw 3vw;
-    }
+    header { font-size: 1.5rem; padding: 4vw 2vw; }
+    nav { font-size: 1rem; padding: 2vw 0; }
+    .section-title { font-size: 1.1rem; }
+    .main-btn { font-size: 0.9rem; padding: 2vw 3vw; width: 100%; }
+    .btn-group { flex-direction: column; gap: 2vw; }
+    .social-links { flex-direction: column; }
+    .package-photos img, .carousel { height: auto; }
+    .carousel-image { position: relative; width: 100%; height: auto; }
 }
