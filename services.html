@@ -1,29 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset= "utf-8">
+<meta charset="utf-8">
 <title>Services - Snazzy Paws Grooming</title>
 <base href="/Assignment-2/">
-<link rel="stylesheet" href="style.css">
+<!-- Include W3.CSS -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+/* Carousel custom CSS */
+.carousel-container {
+    position: relative;
+    max-width: 580px;
+    margin: 0 auto;
+}
+.carousel-container img {
+    width: 100%;
+    display: none;
+    border-radius: 8px;
+}
+.carousel-container img.active {
+    display: block;
+}
+.carousel-buttons {
+    text-align: center;
+    margin-top: 8px;
+}
+.carousel-buttons button {
+    padding: 8px 16px;
+    margin: 0 4px;
+    background-color: #4e8cff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.carousel-buttons button:hover { background-color: #2563eb; }
+</style>
 </head>
-<body>
-    <header>
-        <h1>Browse Packages Below</h1>
-    </header>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="services.html">Services</a> |
-        <a href="bookings.html">Bookings</a> |
-        <a href="contact.html">Contact</a> |
-        <a href="gallery.html">Gallery</a>
-    </nav>
-    <div class="main-container">
-        <div class="left-column">
-            <!-- Choose a Package -->
-            <div class="section">
-    <div class="section-title" style="display: flex; align-items: center; gap: 16px;">
-        Choose a Package:
-        <select id="packageSelect" style="margin-left: 12px;">
+<body class="w3-light-grey">
+
+<!-- Header -->
+<header class="w3-container w3-teal w3-center w3-padding-32">
+  <h1>Browse Packages Below</h1>
+</header>
+
+<!-- Navigation -->
+<nav class="w3-bar w3-light-grey w3-center">
+  <a href="index.html" class="w3-bar-item w3-button">Home</a>
+  <a href="services.html" class="w3-bar-item w3-button">Services</a>
+  <a href="bookings.html" class="w3-bar-item w3-button">Bookings</a>
+  <a href="contact.html" class="w3-bar-item w3-button">Contact</a>
+  <a href="gallery.html" class="w3-bar-item w3-button">Gallery</a>
+</nav>
+
+<!-- Main content -->
+<div class="w3-row-padding w3-margin-top">
+
+  <!-- Left column -->
+  <div class="w3-col l7 m12 s12">
+
+    <!-- Choose a Package -->
+    <div class="w3-card-4 w3-padding w3-margin-bottom">
+      <h3>Choose a Package:</h3>
+      <select id="packageSelect" class="w3-select w3-border w3-round w3-margin-bottom">
         <option value="1">Bath and Brush</option>
         <option value="2">Haircut</option>
         <option value="3">Nail Trim</option>
@@ -38,128 +77,107 @@
         <option value="12">Puppy Package</option>
         <option value="13">Senior Dog Package</option>
         <option value="14">Full Grooming Package</option>
-    </select>
+      </select>
+      <div id="packageDescription" class="w3-margin-bottom" style="font-size:1.05rem;"></div>
+      <a href="bookings.html" class="w3-button w3-blue w3-round-large">Book a Groom</a>
+    </div>
+
+    <!-- FAQs -->
+    <div class="w3-card-4 w3-padding w3-margin-bottom">
+      <h3>FAQs</h3>
+      <p>
+        <strong>How often should my dog be groomed? </strong>
+        Most dogs benefit from grooming every 4–8 weeks, depending on coat type and lifestyle.<br><br>
+        <strong>Do you groom all breeds and sizes?</strong>
+        Yes, we work with dogs of all breeds, and sizes.<br><br>
+        <strong>Do I need to book in advance?</strong>
+        Yes, appointments are recommended.
+      </p>
+    </div>
+
+    <!-- Contact Us -->
+    <div class="w3-card-4 w3-padding w3-margin-bottom">
+      <h3>Contact Us</h3>
+      <p>
+        Have questions or want to chat with our team? We're here to help!
+      </p>
+      <a href="contact.html" class="w3-button w3-blue w3-round-large">Contact Us</a>
+      <div class="w3-section">
+        <a href="https://facebook.com/" target="_blank" class="w3-button w3-light-blue">Facebook</a>
+        <a href="https://instagram.com/" target="_blank" class="w3-button w3-purple">Instagram</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right column -->
+  <div class="w3-col l5 m12 s12">
+
+    <!-- Package Photos -->
+    <div class="w3-card-4 w3-padding w3-margin-bottom w3-center">
+      <img src="package1.jfif" class="w3-image w3-round" alt="Bath and Brush">
+      <img src="package2.jpg" class="w3-image w3-round" alt="Nail Trim">
+    </div>
+
+    <!-- Carousel -->
+    <div class="w3-card-4 w3-padding w3-center">
+      <h3>Gallery Carousel</h3>
+      <div class="carousel-container">
+        <img src="dog1.jfif" class="active" alt="Dog 1">
+        <img src="dog2.jfif" alt="Dog 2">
+        <img src="dog3.jfif" alt="Dog 3">
+      </div>
+      <div class="carousel-buttons">
+        <button onclick="prevImage()">Prev</button>
+        <button onclick="nextImage()">Next</button>
+      </div>
+    </div>
+
+  </div>
 </div>
-<div id="packageDescription" style="margin-top:16px; margin-bottom: 16px; font-size:1.05rem;"></div>
+
+<!-- Footer -->
+<footer class="w3-container w3-light-grey w3-center w3-padding-16">
+  Opening Hours: Mon-Sat 8am-6pm, Sun Closed <br>
+  &copy; 2025 Snazzy Paws Grooming. All rights reserved.
+</footer>
+
 <script>
+// Package descriptions
 const descriptions = {
-    1: "<strong>Bath and Brush:</strong>  Shampoo, blow-dry, brush-out and nail trim. Price: $25–$50.",
-    2: "<strong>Haircut:</strong>  Bath, blow-dry, haircut (based on breed standard or owner's preference) and nail trim. Price: $45–$85.",
-    3: "<strong>Nail Trim:</strong>  Trim nails and, in some cases, filing. Price: $10–$20.",
-    4: "<strong>Ear Cleaning:</strong>  Gentle cleaning of ears to remove wax and debris. Price: $10–$15.",
-    5: "<strong>Teeth Brushing:</strong>  Brushing with pet-safe toothpaste. Price: $10–$15.",
-    6: "<strong>De-Shedding Treatment:</strong>  Special shampoo and undercoat removal. Price: $20–$40 in addition to bath or haircut.",
-    7: "<strong>Flea & Tick Treatment:</strong>  Shampoo and preventative treatment. Price: $15–$30.",
-    8: "<strong>Spa Package:</strong>  Bath, haircut, teeth brushing, nail trim and sometimes special scents or conditioners. Price: $75–$150.",
-    9: "<strong>Express Service:</strong>  For dogs that need minimal grooming or a quick touch-up. Price: an additional $15–$25.",
-    10: "<strong>Medicated Bath:</strong>  For pets with skin conditions requiring special shampoo. Price: an additional $20–$40.",
-    11: "<strong>Special-Breed Cuts:</strong>  Breed-specific cuts or styling based on customer preference. Price varies and is often quoted after consultation.",
-    12: "<strong>Puppy Package:</strong>  Introductory grooming services tailored for puppies. Price: $30–$60.",
-    13: "<strong>Senior Dog Package:</strong>  Grooming services tailored for older dogs, often with special handling and care. Price: $40–$80.",
-    14: "<strong>Full Grooming Package:</strong>  Comprehensive grooming service, including bath, haircut, teeth brushing, nail trim and ear cleaning. Price: $60–$120."
+  1: "<strong>Bath and Brush:</strong>  Shampoo, blow-dry, brush-out and nail trim. Price: $25–$50.",
+  2: "<strong>Haircut:</strong>  Bath, blow-dry, haircut (based on breed standard or owner's preference) and nail trim. Price: $45–$85.",
+  3: "<strong>Nail Trim:</strong>  Trim nails and, in some cases, filing. Price: $10–$20.",
+  4: "<strong>Ear Cleaning:</strong>  Gentle cleaning of ears to remove wax and debris. Price: $10–$15.",
+  5: "<strong>Teeth Brushing:</strong>  Brushing with pet-safe toothpaste. Price: $10–$15.",
+  6: "<strong>De-Shedding Treatment:</strong>  Special shampoo and undercoat removal. Price: $20–$40 in addition to bath or haircut.",
+  7: "<strong>Flea & Tick Treatment:</strong>  Shampoo and preventative treatment. Price: $15–$30.",
+  8: "<strong>Spa Package:</strong>  Bath, haircut, teeth brushing, nail trim and sometimes special scents or conditioners. Price: $75–$150.",
+  9: "<strong>Express Service:</strong>  For dogs that need minimal grooming or a quick touch-up. Price: an additional $15–$25.",
+  10: "<strong>Medicated Bath:</strong>  For pets with skin conditions requiring special shampoo. Price: an additional $20–$40.",
+  11: "<strong>Special-Breed Cuts:</strong>  Breed-specific cuts or styling based on customer preference. Price varies and is often quoted after consultation.",
+  12: "<strong>Puppy Package:</strong>  Introductory grooming services tailored for puppies. Price: $30–$60.",
+  13: "<strong>Senior Dog Package:</strong>  Grooming services tailored for older dogs, often with special handling and care. Price: $40–$80.",
+  14: "<strong>Full Grooming Package:</strong>  Comprehensive grooming service, including bath, haircut, teeth brushing, nail trim and ear cleaning. Price: $60–$120."
 };
 const select = document.getElementById('packageSelect');
 const desc = document.getElementById('packageDescription');
-function updateDescription() {
-    desc.innerHTML = descriptions[select.value];
-}
+function updateDescription() { desc.innerHTML = descriptions[select.value]; }
 select.addEventListener('change', updateDescription);
 updateDescription();
-</script>
-                <div class="btn-group">
-                    <a href="bookings.html" class="main-btn">Book a Groom</a>
-                </div>
-            </div>
-            <!-- FAQs -->
-            <div class="section">
-                <div class="section-title">FAQs</div>
-                <p>
-                    <strong>How often should my dog be groomed? </strong>
-                    Most dogs benefit from grooming every 4–8 weeks, depending on coat type and lifestyle.<br><br>
-                    <strong>Do you groom all breeds and sizes?</strong>
-                    Yes, we work with dogs of all breeds, and sizes.<br><br>
-                    <strong>Do I need to book in advance?</strong>
-                    Yes, appointments are recommended.
-                </p>
-            </div>
-            <!-- Contact Us -->
-            <div class="section">
-                <div class="section-title">Contact Us</div>
-                <p>
-                    Have questions or want to chat with our team? We're here to help!<br>
-                    <a href="contact.html" class="main-btn" style="margin-top:12px;">Contact Us</a>
-                </p>
-                <div class="social-links">
-                    <a href="https://facebook.com/" target="_blank">Facebook</a>
-                    <a href="https://instagram.com/" target="_blank">Instagram</a>
-                </div>
-            </div>
-        </div>
-        <div class="right-column">
-            <!-- Package Photos -->
-            <div class="section package-photos">
-                <img src="package1.jfif" alt="Bath and Brush Photo">
-                <img src="package2.jpg" alt="Nail Trim Photo">
-            </div>
-            <!-- Carousel -->
-            <div class="section">
-                <div class="carousel">
-                    <img src="dog1.jfif" class="carousel-image active" alt="Dog 1">
-                    <img src="dog2.jfif" class="carousel-image" alt="Dog 2">
-                    <img src="dog3.jfif" class="carousel-image" alt="Dog 3">
-                    <button onclick="prevImage()" class="carousel-btn">Prev</button>
-                    <button onclick="nextImage()" class="carousel-btn">Next</button>
-                </div>
-            </div>
-        </div>
-    </div>
-<script>
+
+// Carousel JS
 let current = 0;
-const images = document.querySelectorAll('.carousel-image');
-let intervalId;
+const images = document.querySelectorAll('.carousel-container img');
 
-function showImage(idx) {
-    images.forEach((img, i) => {
-        img.classList.toggle('active', i === idx);
-    });
-}
+function showImage(idx) { images.forEach((img, i) => img.classList.toggle('active', i === idx)); }
+function prevImage() { current = (current - 1 + images.length) % images.length; showImage(current); }
+function nextImage() { current = (current + 1) % images.length; showImage(current); }
 
-function prevImage() {
-    current = (current - 1 + images.length) % images.length;
-    showImage(current);
-}
-
-function nextImage() {
-    current = (current + 1) % images.length;
-    showImage(current);
-}
-
-function startCarousel() {
-    intervalId = setInterval(() => {
-        nextImage();
-    }, 2000);
-}
-
-function stopCarousel() {
-    clearInterval(intervalId);
-}
-
-// Pause on hover
-images.forEach(img => {
-    img.addEventListener('mouseenter', stopCarousel);
-    img.addEventListener('mouseleave', startCarousel);
-});
-
-// Start carousel on load
+function startCarousel() { setInterval(nextImage, 2000); }
+images.forEach(img => { img.addEventListener('mouseenter', () => clearInterval(startCarousel)); img.addEventListener('mouseleave', startCarousel); });
 showImage(current);
 startCarousel();
 </script>
-<footer style="text-align:center; background:#f3f3f3; padding:16px 0; font-size:0.95rem; color:#444; border-top:1px solid #e0e0e0; margin-top:24px;">
-        Opening Hours: Mon-Sat 8am-6pm, Sun Closed <br>
-        &copy; 2025 Snazzy Paws Grooming. All rights reserved.<br>
-    </footer>
 </body>
-
 </html>
-
-
