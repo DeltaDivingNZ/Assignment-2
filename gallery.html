@@ -2,92 +2,129 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<meta name="description" content="Snazzy Paws Grooming Gallery - Check our some photos of our amazing doggo clients!">
+    <meta name="description" content="Snazzy Paws Grooming Gallery - Check out some photos of our amazing doggo clients!">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
     <base href="/Assignment-2/">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style-gallery.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
-<body>
-    <header>
-        <h1>Gallery</h1>
-    </header>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="services.html">Services</a> |
-        <a href="bookings.html">Bookings</a> |
-        <a href="contact.html">Contact</a> |
-        <a href="gallery.html">Gallery</a>
-    </nav>
-    <div class="gallery-main">
-        <div class="gallery-top">
-            <div class="gallery-carousel" id="carousel-left">
-                <img src="before1.jpg" class="active" alt="Before 1">
-                <img src="before2.jpg" alt="Before 2">
-                <img src="before3.jpg" alt="Before 3">
-            </div>
-            <div class="gallery-text">
-                <h2>Before & After Transformations</h2>
-                <p>See the amazing difference a Snazzy Paws Grooming session can make! Swipe through our gallery to view real results from our happy customers.</p>
-            </div>
-            <div class="gallery-carousel" id="carousel-right">
-                <img src="after1.jpg" class="active" alt="After 1">
-                <img src="after2.jpg" alt="After 2">
-                <img src="after3.jpg" alt="After 3">
-            </div>
-        </div>
-        <div class="gallery-bottom">
-            <div class="testimonials" id="testimonial-box">
-                <!-- Testimonials will appear here -->
-            </div>
-            <div class="upload-section">
-                <h3>Share Your Dog's Snazzy Look!</h3>
-                <form>
-                    <input type="file" accept="image/*">
-                    <button type="submit">Upload Photo</button>
-                </form>
-                <p style="margin-top:12px;">We love seeing our furry friends! Upload your dog's photo after their groom and join our gallery.</p>
+<body class="w3-light-grey">
+
+<!-- Header -->
+<header class="w3-container w3-teal w3-center w3-padding-32">
+    <h1>Gallery</h1>
+</header>
+
+<!-- Navigation -->
+<nav class="w3-bar w3-light-grey w3-center">
+    <a href="index.html" class="w3-bar-item w3-button">Home</a>
+    <a href="services.html" class="w3-bar-item w3-button">Services</a>
+    <a href="bookings.html" class="w3-bar-item w3-button">Bookings</a>
+    <a href="contact.html" class="w3-bar-item w3-button">Contact</a>
+    <a href="gallery.html" class="w3-bar-item w3-button">Gallery</a>
+</nav>
+
+<!-- Gallery Top with Slideshows -->
+<div class="w3-row-padding w3-margin-top">
+    <div class="w3-col l4 m12 s12">
+        <div class="w3-card w3-white w3-padding w3-center w3-margin-bottom">
+            <div class="w3-content w3-display-container">
+                <img class="mySlides w3-round" src="before1.jpg" style="width:100%">
+                <img class="mySlides w3-round" src="before2.jpg" style="width:100%">
+                <img class="mySlides w3-round" src="before3.jpg" style="width:100%">
+                <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1,0)">&#10094;</button>
+                <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1,0)">&#10095;</button>
             </div>
         </div>
     </div>
-    <footer style="text-align:center; background:#f3f3f3; padding:16px 0; font-size:0.95rem; color:#444; border-top:1px solid #e0e0e0; margin-top:24px;">
-        Opening Hours: Mon-Sat 8am-6pm, Sun Closed <br>
-        &copy; 2025 Snazzy Paws Grooming. All rights reserved.
-    </footer>
-    <script>
-        // Carousel logic for both carousels
-        const leftImages = document.querySelectorAll('#carousel-left img');
-        const rightImages = document.querySelectorAll('#carousel-right img');
-        let carouselIndex = 0;
-        function showCarouselImages(idx) {
-            leftImages.forEach((img, i) => img.classList.toggle('active', i === idx));
-            rightImages.forEach((img, i) => img.classList.toggle('active', i === idx));
-        }
-        setInterval(() => {
-            carouselIndex = (carouselIndex + 1) % leftImages.length;
-            showCarouselImages(carouselIndex);
-        }, 2000);
 
-        // Testimonials logic
-        const testimonials = [
-            "Snazzy Paws Grooming is amazing! My golden retriever always comes home looking like he belongs in a dog show. The staff is so friendly and gentle—it’s clear they truly care about the animals. I wouldn’t trust anyone else with my pup. – Sarah",
-            "I’ve tried several groomers in town, and Snazzy Paws is by far the best. They listened to exactly what I wanted for my poodle’s cut and delivered it perfectly. Plus, she smells incredible after every appointment! – Mike",
-            "My little terrier usually hates grooming, but she actually gets excited when we pull up to Snazzy Paws! The team is so patient and kind, and they always send her home looking adorable and stress-free. – Jess",
-            "Professional, reliable, and full of love for pets—Snazzy Paws Grooming is everything you could want. They’re always on time, the shop is spotless, and my husky’s coat has never looked better. – Priya",
-            "I can’t say enough good things about Snazzy Paws! From nail trims to full grooming, they handle it all with care. My cat isn’t the easiest client, but they treat her with such patience and respect. Five stars every time! – Tom"
-        ];
-        let testimonialIndex = 0;
-        const testimonialBox = document.getElementById('testimonial-box');
-        function showTestimonial(idx) {
-            testimonialBox.textContent = testimonials[idx];
-        }
-        setInterval(() => {
-            testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-            showTestimonial(testimonialIndex);
-        }, 2500);
-        showTestimonial(testimonialIndex);
-    </script>
+    <div class="w3-col l4 m12 s12">
+        <div class="w3-card w3-white w3-padding w3-center w3-margin-bottom">
+            <h2>Before & After Transformations</h2>
+            <p>See the amazing difference a Snazzy Paws Grooming session can make! Swipe through our gallery to view real results from our happy customers.</p>
+        </div>
+    </div>
+
+    <div class="w3-col l4 m12 s12">
+        <div class="w3-card w3-white w3-padding w3-center w3-margin-bottom">
+            <div class="w3-content w3-display-container">
+                <img class="mySlides w3-round" src="after1.jpg" style="width:100%">
+                <img class="mySlides w3-round" src="after2.jpg" style="width:100%">
+                <img class="mySlides w3-round" src="after3.jpg" style="width:100%">
+                <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1,1)">&#10094;</button>
+                <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1,1)">&#10095;</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Gallery Bottom -->
+<div class="w3-row-padding w3-margin-top">
+    <div class="w3-col l6 m12 s12">
+        <div id="testimonial-box" class="w3-card w3-padding w3-white w3-margin-bottom">
+            <!-- Testimonials will appear here -->
+        </div>
+    </div>
+    <div class="w3-col l6 m12 s12">
+        <div class="w3-card w3-padding w3-white w3-center">
+            <h3>Share Your Dog's Snazzy Look!</h3>
+            <form class="w3-container w3-margin-bottom">
+                <input class="w3-input w3-border w3-round w3-margin-top" type="file" accept="image/*">
+                <button class="w3-button w3-blue w3-round w3-margin-top" type="submit">Upload Photo</button>
+            </form>
+            <p>We love seeing our furry friends! Upload your dog's photo after their groom and join our gallery.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-light-grey w3-center w3-padding-16">
+    Opening Hours: Mon-Sat 8am-6pm, Sun Closed <br>
+    &copy; 2025 Snazzy Paws Grooming. All rights reserved.
+</footer>
+
+<!-- W3.CSS Slideshow Script -->
+<script>
+var slideIndex = [1,1]; // [left slideshow, right slideshow]
+var slideId = ["mySlides","mySlides"];
+showDivs(1, 0);
+showDivs(1, 1);
+
+function plusDivs(n, no) {
+  showDivs(slideIndex[no] += n, no);
+}
+
+function showDivs(n, no) {
+  var i;
+  var x = document.querySelectorAll('.mySlides');
+  var slides = [];
+  if(no === 0) slides = Array.from(x).slice(0,3);
+  else slides = Array.from(x).slice(3,6);
+  if (n > slides.length) {slideIndex[no] = 1}    
+  if (n < 1) {slideIndex[no] = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slides[slideIndex[no]-1].style.display = "block";  
+}
+
+// Auto advance slides every 2 seconds
+setInterval(() => { plusDivs(1,0); plusDivs(1,1); }, 2000);
+
+// Testimonials rotation
+const testimonials = [
+    "Snazzy Paws Grooming is amazing! My golden retriever always comes home looking like he belongs in a dog show. The staff is so friendly and gentle—it’s clear they truly care about the animals. I wouldn’t trust anyone else with my pup. – Sarah",
+    "I’ve tried several groomers in town, and Snazzy Paws is by far the best. They listened to exactly what I wanted for my poodle’s cut and delivered it perfectly. Plus, she smells incredible after every appointment! – Mike",
+    "My little terrier usually hates grooming, but she actually gets excited when we pull up to Snazzy Paws! The team is so patient and kind, and they always send her home looking adorable and stress-free. – Jess",
+    "Professional, reliable, and full of love for pets—Snazzy Paws Grooming is everything you could want. They’re always on time, the shop is spotless, and my husky’s coat has never looked better. – Priya",
+    "I can’t say enough good things about Snazzy Paws! From nail trims to full grooming, they handle it all with care. My cat isn’t the easiest client, but they treat her with such patience and respect. Five stars every time! – Tom"
+];
+let testimonialIndex = 0;
+const testimonialBox = document.getElementById('testimonial-box');
+function showTestimonial(idx) { testimonialBox.textContent = testimonials[idx]; }
+setInterval(() => { testimonialIndex = (testimonialIndex + 1) % testimonials.length; showTestimonial(testimonialIndex); }, 2500);
+showTestimonial(testimonialIndex);
+</script>
+
 </body>
-
 </html>
